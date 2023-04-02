@@ -1,29 +1,23 @@
 import { useEffect, useState } from "react";
+import { useMotionValue, useSpring, MotionValue } from "framer-motion";
 
 export function useAnimatedCount(value: number) {
     const [count, setCount] = useState(0);
 
+    const motionValue = useMotionValue(0);
+    const springValue = useSpring(motionValue, {
+        damping: 100,
+        stiffness: 100,
+        duration: 2500,
+    });
+
     useEffect(() => {
-        if (typeof value !== "number") return;
+        motionValue.set(value);
+    }, [value, motionValue]);
 
-        let start = count;
-        const end = value;
-        if (start === end) return;
-
-        const diff = Math.abs(start - end);
-        const delay = 3000 / diff;
-
-        let timer = setInterval(() => {
-            console.log({ timer });
-            if (start < end) {
-                start += 1;
-            } else if (start > end) {
-                start -= 1;
-            }
-            setCount(start);
-            if (start === end) clearInterval(timer);
-        }, delay);
-    }, [value]);
+    useEffect(() => {
+        springValue.on("change", (latest) => setCount(latest.toFixed(0)));
+    }, [springValue]);
 
     return count;
 }
