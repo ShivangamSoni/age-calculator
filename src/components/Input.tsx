@@ -36,7 +36,7 @@ export default forwardRef<HTMLInputElement, InputProps>(function input(
                     {...rest}
                     className={`text-lg sm:text-2xl md:text-3xl font-bold tracking-wide p-3 border-none outline-none ring-1 ${
                         !error ? "ring-neutral-grey-200" : "ring-error"
-                    } rounded-md transition-all duration-200 focus:ring-primary focus:ring-opacity-50 placeholder:font-bold placeholder:tracking-wide`}
+                    } rounded-md transition-all duration-200 focus:ring-primary focus:ring-opacity-100 placeholder:font-bold placeholder:tracking-wide`}
                 />
             </label>
             {displayError && <Error>{error}</Error>}
