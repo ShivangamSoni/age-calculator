@@ -150,17 +150,17 @@ export default function App() {
                     <div className="grid gap-2">
                         <Output
                             label="years"
-                            value={age ? age.years.toString() : "--"}
+                            value={age ? age.years : "--"}
                             htmlFor="year"
                         />
                         <Output
                             label="months"
-                            value={age ? age.months.toString() : "--"}
+                            value={age ? age.months : "--"}
                             htmlFor="month"
                         />
                         <Output
                             label="days"
-                            value={age ? age.days.toString() : "--"}
+                            value={age ? age.days : "--"}
                             htmlFor="day"
                         />
                     </div>
